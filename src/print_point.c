@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "point.h"
 #include "clear_buffer.h"
-#include "modify_point.h"
+#include "point.h"  
 
 void print_point(Point_t *point)
 {

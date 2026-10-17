@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "create_color.h"
 #include "ask_integer_range.h"
-#include "print_point.h"
+#include "point.h"
 
 Color_t* new_color(uint8_t red, uint8_t green, uint8_t blue)
 {

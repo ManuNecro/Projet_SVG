@@ -15,6 +15,6 @@ typedef struct Rectangle_s
 Rectangle_t *create_rectangle(void);
 
 // Supprimer un rectangle/carré
-void delete_rectancle(Rectangle_t *rectangle);
+void delete_rectangle(Rectangle_t *rectangle);
 
 #endif

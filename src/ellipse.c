@@ -29,7 +29,7 @@ void delete_ellipse(Ellipse_t *ellipse)
 {
     if (ellipse != NULL)
     {
-        if (ellipse->center != NULL);
+        if (ellipse->center != NULL)
              // on libere d'abord le point a l'interieur de la structure
         free(ellipse->center);
     }
