@@ -2,7 +2,7 @@
 #include "ask_integer.h"
 #include "point.h"
 
-void modifie_point(Point_t *modify_point)
+void modify_point(Point_t *modify_point)
 {
     printf("Anciennes valeurs de x - y : %d - %d\n",modify_point->x , modify_point->y);
     modify_point->x = ask_integer("Rentrer la valeur de x a modifier.\n"); // On modifie la valeur de X.
