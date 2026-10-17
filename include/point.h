@@ -8,4 +8,6 @@ typedef struct Point_s
     
 }Point_t;
 
+Point_t* create_point();
+
 #endif

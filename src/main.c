@@ -2,10 +2,10 @@
 #include <ask_integer.h>
 #include <ask_integer_range.h>
 #include "point.h"
+#include "ligne.h"
+#include <stdlib.h>
+
 int main(void) 
 {
-    Point_t point;
-    point.x = ask_integer("Rentrer la valeur de x ");
-    point.y = ask_integer("Rentrer la valeur de y");
-
+    Ligne_t *ligne = create_ligne();
 }

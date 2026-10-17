@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "ask_integer.h"
 #include "clear_buffer.h"
 #include "point.h"
