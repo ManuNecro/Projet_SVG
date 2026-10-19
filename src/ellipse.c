@@ -1,10 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "ellipse.h"
 #include "ask_integer.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 
 // Fonction pour créer un cercle ou une ellipse
-
+/**
+ * @brief This function creates a new ellipse or a circle by prompting the user for its center point and radii.
+ * @return A pointer to the newly created Ellipse_t structure.
+ */
 Ellipse_t *create_ellipse(void)
 {
     // Allocation de la mémoire pour la structure Ellipse
@@ -24,7 +28,10 @@ Ellipse_t *create_ellipse(void)
     return ellipse;
 }
 
-// Fonction pour liberé la mémoire
+/**
+ * @brief This function deletes an ellipse and frees the allocated memory for its center point and the ellipse structure itself.
+ * @param ellipse A pointer to the Ellipse_t structure to be deleted.
+ */
 void delete_ellipse(Ellipse_t *ellipse)
 {
     if (ellipse != NULL)

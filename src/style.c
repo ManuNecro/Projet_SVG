@@ -1,8 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "style.h"
 #include "point.h"
+#include "rotate.h"
+#include <stdio.h>
+#include <stdlib.h>
 
+/**
+ * @brief This function creates a new style by prompting the user for fill and outline colors, translation point, and rotation angle.
+ * @return A pointer to the newly created Style_t structure.
+ */
 Style_t *create_style(void)
 {
 
@@ -12,7 +17,7 @@ Style_t *create_style(void)
 
     // création de la couleur de remplissage
     printf("Creation de la couleur de remplissage\n");
-    style->fill = new_color(255,255,255); // Couleur par defaut (blanc)
+    style->fill = new_color(255,255,255); // Couleur par defaut blanc
 
     printf("--- Creation de la couleur des contours ---\n");
     style->outline = new_color(255,255,255); // Couleur par defaut blanc
@@ -24,7 +29,10 @@ Style_t *create_style(void)
     style->rotate = rotate_angle(); // Demande l'angle de rotation
     return style;
 }
-
+/**
+ * @brief This function modifies an existing style by prompting the user for new fill and outline colors, translation point, and rotation angle.
+ * @param style A pointer to the Style_t structure to be modified. 
+ */
 void modify_style(Style_t *style)
 {
     if (style == NULL) return; // securité si style n'existe pas 
@@ -41,7 +49,10 @@ void modify_style(Style_t *style)
     printf("--- Modification de la rotation ---\n");
     modify_angle(style->rotate);
 }
-
+/**
+ * @brief This function prints the details of a given style, including fill and outline colors, translation point, and rotation angle.
+ * @param style A pointer to the Style_t structure whose details will be printed.
+ */
 // Fonction pour afficher les paramètres du style 
 void print_style(Style_t *style)
 {
@@ -60,7 +71,10 @@ void print_style(Style_t *style)
     printf("Rotation : ");
     print_angle(style->rotate);
 }
-
+/**
+ * @brief This function deletes a Style_t structure and frees the allocated memory for its components (fill color, outline color, translation point, and rotation angle).
+ * @param style A pointer to the Style_t structure to be deleted.
+ */
 void delete_style(Style_t *style)
 {
     if (style != NULL)

@@ -11,5 +11,6 @@ typedef struct Ligne_s
 }Ligne_t;
 
 Ligne_t* create_ligne();
+
 void delete_ligne(Ligne_t *l);
 #endif

@@ -1,7 +1,11 @@
-#include <stdio.h>
 #include "ask_integer.h"
 #include "point.h"
+#include <stdio.h>
 
+/**
+ * @brief This function modifies the x and y coordinates of an existing point by prompting the user for new values.
+ * @param modify_point A pointer to the Point_t structure to be modified.
+ */
 void modify_point(Point_t *modify_point)
 {
     printf("Anciennes valeurs de x - y : %d - %d\n",modify_point->x , modify_point->y);

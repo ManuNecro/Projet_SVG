@@ -1,11 +1,7 @@
 #include <stdio.h>
-#include "ask_integer.h"
-#include "ask_integer_range.h"
-#include "point.h"
-#include "ligne.h"
-#include <stdlib.h>
 
-int main(void) 
+int main(void)
 {
-    Ligne_t *ligne = create_ligne();
+    printf("Test de compilation !\n");
+    return 0;
 }

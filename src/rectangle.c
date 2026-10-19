@@ -1,8 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "rectangle.h"
 #include "ask_integer.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * @brief This function creates a new rectangle by prompting the user for its origin point, width, and height.
+ * @return A pointer to the newly created Rectangle_t structure.
+ */
 Rectangle_t *create_rectangle(void)
 {
     // Allocation de la memoire 
@@ -18,7 +21,10 @@ Rectangle_t *create_rectangle(void)
 
     return rectangle;
 }
-
+/**
+ * @brief This function deletes a rectangle and frees the allocated memory for its origin point and the rectangle structure itself.
+ * @param rectangle A pointer to the Rectangle_t structure to be deleted.
+ */
 void delete_rectangle(Rectangle_t* rectangle)
 {
     if (rectangle != NULL)
