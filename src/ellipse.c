@@ -1,5 +1,7 @@
 #include "ellipse.h"
 #include "ask_integer.h"
+#include "ask_integer_range.h"
+#include "style.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -26,6 +28,19 @@ Ellipse_t *create_ellipse(void)
     ellipse->ry = ask_integer("Longueur du rayon Y : ");
 
     return ellipse;
+}
+void style_ellipse(Style_t *ellipse)
+{
+    if (ellipse == NULL)
+        return; // Sécurité si la ligne n'existe pas
+
+    ellipse->fill = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
+
+    ellipse->outline = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
+
+    modify_point(ellipse->translate); // Demande les coordonnée X, Y
+
+    ellipse->rotate = rotate_angle(); // Demande l'angle de rotation
 }
 
 /**

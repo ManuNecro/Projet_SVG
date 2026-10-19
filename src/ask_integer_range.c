@@ -17,6 +17,7 @@ int ask_integer_range(char* message, int min, int max)
     do
     {
         input_number = ask_integer(message); // On appel la fonction pour demander un entier.
+      
 
         // On vérifie que la valeur n'est pas en dehors
         if (input_number < min || input_number > max)

@@ -1,6 +1,7 @@
 #include "point.h"
 #include "ligne.h"
 #include "style.h"
+#include "ask_integer_range.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -22,13 +23,22 @@ Ligne_t *create_ligne()
     return l;
 }
 /**
- * @brief This function applies a style to a line by prompting the user for fill and outline colors.
- * @param l A pointer to the Ligne_t structure to which the style will be applied.
+ * 
+ * @brief This function applies a style to a given line by prompting the user for fill and outline colors, translation point, and rotation angle.
+ * @param l A pointer to the Style_t structure to be applied to the line.
  */
 void style_ligne(Style_t *l)
 {
     if (l == NULL)
         return; // Sécurité si la ligne n'existe pas
+
+    l->fill = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
+
+    l->outline = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
+
+    modify_point(l->translate); // Demande les coordonnée X, Y
+
+    l->rotate = rotate_angle(); // Demande l'angle de rotation
 }
 /**
  * @brief This function deletes a line and frees the allocated memory for its endpoints and the line structure itself.
