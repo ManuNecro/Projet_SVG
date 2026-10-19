@@ -52,3 +52,4 @@ void delete_color(Color_t *color)
 {
    free(color);
 }
+

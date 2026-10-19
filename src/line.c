@@ -1,5 +1,5 @@
 #include "point.h"
-#include "ligne.h"
+#include "line.h"
 #include "style.h"
 #include "ask_integer_range.h"
 #include <stdio.h>
@@ -9,11 +9,11 @@
  * @brief This function creates a new line by prompting the user for its two endpoints.
  * @return A pointer to the newly created Ligne_t structure.
  */
-Ligne_t *create_ligne()
+Line_t *create_line()
 {
 
     // Allocation mémoire pour la ligne
-    Ligne_t *l = malloc(sizeof(Ligne_t));
+    Line_t *l = malloc(sizeof(Line_t));
     if (l == NULL)
         return NULL; // Echec d'allocation
     printf("--- Point de depart ---\n");
@@ -27,7 +27,7 @@ Ligne_t *create_ligne()
  * @brief This function applies a style to a given line by prompting the user for fill and outline colors, translation point, and rotation angle.
  * @param l A pointer to the Style_t structure to be applied to the line.
  */
-void style_ligne(Style_t *l)
+void style_line(Style_t *l)
 {
     if (l == NULL)
         return; // Sécurité si la ligne n'existe pas
@@ -45,7 +45,7 @@ void style_ligne(Style_t *l)
  * @param l A pointer to the Ligne_t structure to be deleted.
  *
  */
-void delete_ligne(Ligne_t *l)
+void delete_line(Line_t *l)
 {
     if (l != NULL) // Nettoyage de la mémoire
         if (l->p1)

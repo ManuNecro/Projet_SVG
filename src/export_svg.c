@@ -1,7 +1,7 @@
 #include "export_svg.h"
 #include "rectangle.h"
 #include "ellipse.h"
-#include "ligne.h"
+#include "line.h"
 #include "style.h"
 #include <stdio.h>
 

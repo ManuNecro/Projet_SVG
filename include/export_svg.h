@@ -2,7 +2,7 @@
 #define EXPORT_SVG_H
 
 #include "rectangle.h"
-#include "ligne.h"
+#include "line.h"
 #include "ellipse.h"
 #include "style.h"
 #include <stdio.h>
@@ -27,7 +27,7 @@ void export_svg_ellipse(FILE *file, Ellipse_t *ellipse, Style_t *style);
  * @param ligne A pointer to the Ligne_t structure representing the line to be exported.
  * @param style A pointer to the Style_t structure representing the style to be applied to the line.
  */
-void export_svg_line(FILE *file, Ligne_t *ligne, Style_t *style);
+void export_svg_line(FILE *file, Line_t *ligne, Style_t *style);
 
 #endif
 
