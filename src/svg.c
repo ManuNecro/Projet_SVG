@@ -120,10 +120,15 @@ void delete_shape_svg(SVG_t *svg, int index)
 void modify_shape_svg(SVG_t *svg, int index)
 {
     if (svg == NULL || index < 0 || index >= svg->capacity)
+    {
         printf("Error : invalid index or SVG is NULL.\n");
-    return;
-    if (svg->formes[index] == NULL)
         return;
+    }
+    if (svg->formes[index] == NULL)
+    {
+        printf("YOUHOU !");
+        return;
+    }
 
     if (svg->formes[index]->style != NULL)
     {

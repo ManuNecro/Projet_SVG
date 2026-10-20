@@ -92,6 +92,6 @@ void run_menu()
             break;
         }
         }
-        delete_svg(svg);
     }
+    delete_svg(svg);
 }
