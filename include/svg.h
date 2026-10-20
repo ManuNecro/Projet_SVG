@@ -37,7 +37,6 @@ typedef struct SVG_s
 {
     Forme_t **formes; // Tableau de formes alloué dynamiquement
     int capacity;     // Capacité maximale (ex: 50)
-    int count;        // Nombre actuel de formes enregistrées
 } SVG_t;
 
 // Prototypes des fonctions de gestion de la scène

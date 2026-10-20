@@ -14,12 +14,19 @@ SVG_t *create_svg(int capacity)
     if (svg == NULL)
         return NULL;
 
-    svg->formes = malloc(sizeof(Forme_t) * capacity);
+    svg->formes = malloc(sizeof(Forme_t *) * capacity);
     if (svg->formes == NULL)
     {
         free(svg);
         return NULL;
     }
+    // we initialize the array of shapes to NULL to indicate that no shapes have been added yet
+    for (int i = 0; i < capacity; i++)
+    {
+        svg->formes[i] = NULL;
+    }
+
+    svg->capacity = capacity;
     return svg;
 }
 
@@ -30,22 +37,22 @@ SVG_t *create_svg(int capacity)
  */
 void add_shape_to_svg(SVG_t *svg, Forme_t *shape)
 {
-    if (svg == NULL)
+    if (svg == NULL || shape == NULL)
     {
-        printf("Erreur : Impossible d'ajouter la forme (tableau inexistant).\n");
+        printf("Error : SVG or shape is NULL.\n");
         return;
     }
     // On ajoute la forme au tableau de formes
     for (int i = 0; i < svg->capacity; i++)
     {
-        if (svg->formes[i] != NULL)
+        if (svg->formes[i] == NULL)
         {
             svg->formes[i] = shape;
             return;
         }
     }
 
-    // echec
+    printf("Error : SVG is full, cannot add more shapes.\n");
 }
 
 /**
@@ -58,38 +65,20 @@ void delete_svg(SVG_t *svg)
     if (svg == NULL)
         return;
 
-    if (svg->formes == NULL)
+    if (svg->formes != NULL)
     {
-        free(svg);
-        return;
+        for (int i = 0; i < svg->capacity; i++)
+        {
+            if (svg->formes[i] != NULL)
+            {
+                delete_shape_svg(svg, i);
+            }
+        }
+        free(svg->formes);
     }
-
-    for (int i = 0; i < svg->capacity; i++)
-    {
-
-        delete_shape_svg(svg, i);
-        // if (svg->formes[i] == NULL)
-        //     continue;
-
-        // if (svg->formes[i]->style != NULL)
-        //     delete_style(svg->formes[i]->style);
-
-        // switch (svg->formes[i]->type)
-        // {
-        // case FORME_RECTANGLE:
-        //     delete_rectangle(svg->formes[i]->forme.rectangle);
-        //     break;
-        // case FORME_ELLIPSE:
-        //     delete_ellipse(svg->formes[i]->forme.ellipse);
-        //     break;
-        // case FORME_LINE:
-        //     delete_line(svg->formes[i]->forme.line);
-        //     break;
-        // }
-    }
-    free(svg->formes);
     free(svg);
 }
+
 /**
  * @brief This function deletes a specific shape from the SVG scene at the given index, freeing its associated style and shape data.
  * @param svg A pointer to the SVG_t structure representing the SVG scene.
@@ -99,8 +88,10 @@ void delete_shape_svg(SVG_t *svg, int index)
 {
 
     if (svg == NULL || index < 0 || index >= svg->capacity)
+    {
         printf("Error : Invalid index or SVG is NULL.\n");
-    return;
+        return;
+    }
 
     if (svg->formes[index] == NULL)
         return;
@@ -118,7 +109,6 @@ void delete_shape_svg(SVG_t *svg, int index)
     case FORME_LINE:
         delete_line(svg->formes[index]->forme.line);
     }
-
     free(svg->formes[index]);
     svg->formes[index] = NULL;
 }

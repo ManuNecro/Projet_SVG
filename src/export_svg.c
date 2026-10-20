@@ -28,20 +28,23 @@ void export_scene_svg(const char *filename, SVG_t *svg, int width, int height)
     fprintf(file, "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"%d\" height=\"%d\">\n", width, height);
 
     // Iterate through the shapes in the SVG scene and export each one
-    for (int i = 0; i < svg->count; i++)
+    for (int i = 0; i < svg->capacity; i++)
     {
-        Forme_t formes = *svg->formes[i];
+        if (svg->formes[i] == NULL)
+            continue;
+
+        Forme_t *formes = svg->formes[i];
         // Export each shape based on its type
-        switch (formes.type)
+        switch (formes->type)
         {
         case FORME_RECTANGLE:
-            export_svg_rectangle(file, formes.forme.rectangle, formes.style);
+            export_svg_rectangle(file, formes->forme.rectangle, formes->style);
             break;
         case FORME_ELLIPSE:
-            export_svg_ellipse(file, formes.forme.ellipse, formes.style);
+            export_svg_ellipse(file, formes->forme.ellipse, formes->style);
             break;
         case FORME_LINE:
-            export_svg_line(file, formes.forme.line, formes.style);
+            export_svg_line(file, formes->forme.line, formes->style);
             break;
         }
     }

@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include "menu.h"
 
 int main(void)
 {
-    printf("Test de compilation !\n");
+    run_menu();
     return 0;
 }
