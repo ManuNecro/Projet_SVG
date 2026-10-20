@@ -20,7 +20,7 @@ Rectangle_t *create_rectangle(void)
     }
     printf("Creation du coin superieur gauche : ");
     rectangle->origin = create_point();
-    rectangle->widght = ask_integer("Quel largeur de forme ? ");
+    rectangle->width = ask_integer("Quel largeur de forme ? ");
     rectangle->height = ask_integer("Quel hauteur de forme ? ");
 
     return rectangle;

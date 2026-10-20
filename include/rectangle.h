@@ -6,7 +6,7 @@
 typedef struct Rectangle_s
 {
     Point_t *origin; // Coin superieur gauche (X, Y)
-    int widght;
+    int width;
     int height;
 }Rectangle_t;
 

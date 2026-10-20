@@ -30,5 +30,25 @@ typedef struct Forme_s
     Style_t *style;    // Le style appliqué à la forme
 } Forme_t;
 
+/**
+ * @brief This structure represents an SVG scene that can contain multiple shapes (Forme_t) with their associated styles.
+ */
+typedef struct SVG_s
+{
+    Forme_t **formes; // Tableau de formes alloué dynamiquement
+    int capacity;     // Capacité maximale (ex: 50)
+    int count;        // Nombre actuel de formes enregistrées
+} SVG_t;
+
+// Prototypes des fonctions de gestion de la scène
+SVG_t *create_svg(int capacity);
+
+void add_shape_to_svg(SVG_t *svg, Forme_t *shape);
+
+void delete_shape_svg(SVG_t *svg, int index);
+
+void modify_shape_svg(SVG_t *svg, int index);
+
+void delete_svg(SVG_t *svg);
 
 #endif
