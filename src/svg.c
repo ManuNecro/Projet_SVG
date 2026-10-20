@@ -1,4 +1,5 @@
 #include "svg.h"
+#include "ask_integer.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,14 +30,22 @@ SVG_t *create_svg(int capacity)
  */
 void add_shape_to_svg(SVG_t *svg, Forme_t *shape)
 {
-    if (svg == NULL || svg->count >= svg->capacity)
+    if (svg == NULL)
     {
-        printf("Erreur : Impossible d'ajouter la forme (tableau plein ou inexistant).\n");
+        printf("Erreur : Impossible d'ajouter la forme (tableau inexistant).\n");
         return;
     }
-    // On ajoute la forme au tableau de formes et on incrémente le compteur
-    svg->formes[svg->count] = shape;
-    svg->count++;
+    // On ajoute la forme au tableau de formes
+    for (int i = 0; i < svg->capacity; i++)
+    {
+        if (svg->formes[i] != NULL)
+        {
+            svg->formes[i] = shape;
+            return;
+        }
+    }
+
+    // echec
 }
 
 /**
@@ -55,26 +64,28 @@ void delete_svg(SVG_t *svg)
         return;
     }
 
-    for (int i = 0; i < svg->count; i++)
+    for (int i = 0; i < svg->capacity; i++)
     {
-        if (svg->formes[i] == NULL)
-            continue;
 
-        if (svg->formes[i]->style != NULL)
-            delete_style(svg->formes[i]->style);
+        delete_shape_svg(svg, i);
+        // if (svg->formes[i] == NULL)
+        //     continue;
 
-        switch (svg->formes[i]->type)
-        {
-        case FORME_RECTANGLE:
-            delete_rectangle(svg->formes[i]->forme.rectangle);
-            break;
-        case FORME_ELLIPSE:
-            delete_ellipse(svg->formes[i]->forme.ellipse);
-            break;
-        case FORME_LINE:
-            delete_line(svg->formes[i]->forme.line);
-            break;
-        }
+        // if (svg->formes[i]->style != NULL)
+        //     delete_style(svg->formes[i]->style);
+
+        // switch (svg->formes[i]->type)
+        // {
+        // case FORME_RECTANGLE:
+        //     delete_rectangle(svg->formes[i]->forme.rectangle);
+        //     break;
+        // case FORME_ELLIPSE:
+        //     delete_ellipse(svg->formes[i]->forme.ellipse);
+        //     break;
+        // case FORME_LINE:
+        //     delete_line(svg->formes[i]->forme.line);
+        //     break;
+        // }
     }
     free(svg->formes);
     free(svg);
@@ -87,7 +98,7 @@ void delete_svg(SVG_t *svg)
 void delete_shape_svg(SVG_t *svg, int index)
 {
 
-    if (svg == NULL || index < 0 || index >= svg->count)
+    if (svg == NULL || index < 0 || index >= svg->capacity)
         printf("Error : Invalid index or SVG is NULL.\n");
     return;
 
@@ -107,6 +118,9 @@ void delete_shape_svg(SVG_t *svg, int index)
     case FORME_LINE:
         delete_line(svg->formes[index]->forme.line);
     }
+
+    free(svg->formes[index]);
+    svg->formes[index] = NULL;
 }
 /**
  * @brief This function modifies the style of a specific shape in the SVG scene at the given index.
@@ -115,12 +129,34 @@ void delete_shape_svg(SVG_t *svg, int index)
  */
 void modify_shape_svg(SVG_t *svg, int index)
 {
-    if (svg == NULL || index < 0 || index >= svg->count)
+    if (svg == NULL || index < 0 || index >= svg->capacity)
         printf("Error : invalid index or SVG is NULL.\n");
     return;
+    if (svg->formes[index] == NULL)
+        return;
 
     if (svg->formes[index]->style != NULL)
     {
         modify_style(svg->formes[index]->style);
+    }
+
+    switch (svg->formes[index]->type)
+    {
+    case FORME_RECTANGLE:
+        modify_point(svg->formes[index]->forme.rectangle->origin);
+        svg->formes[index]->forme.rectangle->width = ask_integer("New width of the rectangle: ");
+        svg->formes[index]->forme.rectangle->height = ask_integer("New height of the rectangle: ");
+        break;
+    case FORME_ELLIPSE:
+        modify_point(svg->formes[index]->forme.ellipse->center);
+        svg->formes[index]->forme.ellipse->rx = ask_integer("New radius X of the ellipse: ");
+        svg->formes[index]->forme.ellipse->ry = ask_integer("New radius Y of the ellipse: ");
+        break;
+    case FORME_LINE:
+        printf("New coordinates for the first point of the line:\n");
+        modify_point(svg->formes[index]->forme.line->p1);
+        printf("New coordinates for the second point of the line:\n");
+        modify_point(svg->formes[index]->forme.line->p2);
+        break;
     }
 }
