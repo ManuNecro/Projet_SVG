@@ -25,9 +25,9 @@ typedef union
  */
 typedef struct Forme_s
 {
-    TypeForme_e type;  // Indique quelle forme est stockée dans l'union
-    DataForme_u forme; // Le pointeur vers la forme réelle
-    Style_t *style;    // Le style appliqué à la forme
+    TypeForme_e type;
+    DataForme_u forme;
+    Style_t *style;
 } Forme_t;
 
 /**
@@ -35,11 +35,10 @@ typedef struct Forme_s
  */
 typedef struct SVG_s
 {
-    Forme_t **formes; // Tableau de formes alloué dynamiquement
-    int capacity;     // Capacité maximale (ex: 50)
+    Forme_t **formes;
+    int capacity;
 } SVG_t;
 
-// Prototypes des fonctions de gestion de la scène
 SVG_t *create_svg(int capacity);
 
 void add_shape_to_svg(SVG_t *svg, Forme_t *shape);

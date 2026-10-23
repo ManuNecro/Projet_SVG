@@ -12,42 +12,43 @@
  */
 Rectangle_t *create_rectangle(void)
 {
-    // Allocation de la memoire 
+    // Allocation de la memoire
     Rectangle_t *rectangle = malloc(sizeof(Rectangle_t));
     if (rectangle == NULL)
     {
         return NULL;
     }
-    printf("Creation du coin superieur gauche : ");
+    printf("Creation of the top-left corner:\n");
     rectangle->origin = create_point();
-    rectangle->width = ask_integer("Quel largeur de forme ? ");
-    rectangle->height = ask_integer("Quel hauteur de forme ? ");
+    rectangle->width = ask_integer("What width for the shape? ");
+    rectangle->height = ask_integer("What height for the shape? ");
 
     return rectangle;
 }
 void style_rect(Style_t *rect)
 {
     if (rect == NULL)
-        return; // Sécurité si la ligne n'existe pas
+        return;
 
     rect->fill = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
 
     rect->outline = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
 
-    modify_point(rect->translate); // Demande les coordonnée X, Y
+    modify_point(rect->translate);
 
-    rect->rotate = rotate_angle(); // Demande l'angle de rotation
+    rect->rotate = rotate_angle();
 }
+
 /**
  * @brief This function deletes a rectangle and frees the allocated memory for its origin point and the rectangle structure itself.
  * @param rectangle A pointer to the Rectangle_t structure to be deleted.
  */
-void delete_rectangle(Rectangle_t* rectangle)
+void delete_rectangle(Rectangle_t *rectangle)
 {
     if (rectangle != NULL)
     {
-        if (rectangle->origin != NULL) // On libere d'abord le point créer dans la structure
-        free (rectangle->origin);
+        if (rectangle->origin != NULL)
+            free(rectangle->origin);
+        free(rectangle);
     }
-    free (rectangle); // On libere la structure
 }

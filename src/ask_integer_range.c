@@ -10,22 +10,20 @@
  * @param max The maximum acceptable value (inclusive).
  * @return The valid integer input provided by the user within the specified range.
  */
-int ask_integer_range(char* message, int min, int max)
+int ask_integer_range(char *message, int min, int max)
 {
     int input_number;
 
     do
     {
-        input_number = ask_integer(message); // On appel la fonction pour demander un entier.
-      
+        input_number = ask_integer(message);
 
-        // On vérifie que la valeur n'est pas en dehors
         if (input_number < min || input_number > max)
         {
             printf("Error the value must be in the range : %d and %d.\n", min, max);
         }
 
-    } while (input_number < min || input_number > max); // On recommence tant que c'est invalide
+    } while (input_number < min || input_number > max);
 
     return input_number;
 }

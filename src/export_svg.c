@@ -21,7 +21,7 @@ void export_scene_svg(const char *filename, SVG_t *svg, int width, int height)
     FILE *file = fopen(filename, "w");
     if (file == NULL)
     {
-        printf("Erreur lors de l'ouverture du fichier %s\n", filename);
+        printf("Error while opening the file %s\n", filename);
         return;
     }
     // Write the SVG header with the specified width and height
@@ -53,7 +53,7 @@ void export_scene_svg(const char *filename, SVG_t *svg, int width, int height)
     fprintf(file, "</svg>\n");
     fclose(file);
 
-    printf("Fichier %s genere avec succes !\n", filename);
+    printf("File %s successfully generated! !\n", filename);
 }
 
 /**

@@ -1,4 +1,5 @@
 #include "ask_navigation.h"
+#include "color_menu.h"
 #include "clear_buffer.h"
 #include "export_svg.h"
 #include "ellipse.h"
@@ -25,13 +26,18 @@ void run_menu()
 
     while (running == 1)
     {
-        printf("--- Main Menu ---\n");
-        printf("1. Create a form\n");
-        printf("2. Modify a form\n");
-        printf("3. Delete a form\n");
-        printf("4. Export SVG\n");
-        printf("5. Exit\n");
-        int choice = ask_navigation("Enter your choice: ", 1, 5);
+        printf(CYAN BOLD "===================================\n" RESET);
+        printf(MAGENTA BOLD "||          SVG MENU             || \n" RESET);
+        printf(CYAN BOLD "===================================\n\n" RESET);
+
+        printf("  " GREEN "1." RESET " Create a form\n");
+        printf("  " YELLOW "2." RESET " Modify a form\n");
+        printf("  " RED "3." RESET " Delete a form\n");
+        printf("  " MAGENTA "4." RESET " Export SVG\n");
+        printf("  " BLUE "5." RESET " Exit\n\n");
+
+        printf(CYAN BOLD "===================================\n" RESET);
+        int choice = ask_navigation(YELLOW BOLD "Enter your choice: " RESET, 1, 5);
 
         switch (choice)
         {
@@ -87,7 +93,7 @@ void run_menu()
         }
         case 5:
         {
-            printf("Fermeture du programme...\n");
+            printf("Closing the program...\n");
             running = 0;
             break;
         }

@@ -1,20 +1,18 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 #include "point.h"
-
-
+/**
+ * @brief This structure represents a rectangle or square, including its origin point, width, and height.
+ */
 typedef struct Rectangle_s
 {
-    Point_t *origin; // Coin superieur gauche (X, Y)
+    Point_t *origin;
     int width;
     int height;
-}Rectangle_t;
-
-// Crer un rectangle/carré
+} Rectangle_t;
 
 Rectangle_t *create_rectangle(void);
 
-// Supprimer un rectangle/carré
 void delete_rectangle(Rectangle_t *rectangle);
 
 #endif

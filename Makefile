@@ -3,9 +3,8 @@ CFLAGS = -std=c99 -Wall -Wextra -Werror -fstack-protector -Iinclude
 TARGET = projet_svg
 
 
-SRC = $(wildcard src/*.c) #On cherche tous les fichiers .c automatiquement pour eviter de devoir tous les taper manuellement dans le build
+SRC = $(wildcard src/*.c) 
 
-#On construit le build grace aux fichiers recupérés par la fonction wildcard
 build:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) 
 

@@ -12,33 +12,32 @@
 Line_t *create_line()
 {
 
-    // Allocation mémoire pour la ligne
     Line_t *l = malloc(sizeof(Line_t));
     if (l == NULL)
-        return NULL; // Echec d'allocation
+        return NULL;
     printf("--- Point de depart ---\n");
-    l->p1 = create_point(); // Saisi du premier point
+    l->p1 = create_point();
     printf("--- Point d'arrivee ---\n");
-    l->p2 = create_point(); // Saisi du second point
+    l->p2 = create_point();
     return l;
 }
 /**
- * 
+ *
  * @brief This function applies a style to a given line by prompting the user for fill and outline colors, translation point, and rotation angle.
  * @param l A pointer to the Style_t structure to be applied to the line.
  */
 void style_line(Style_t *l)
 {
     if (l == NULL)
-        return; // Sécurité si la ligne n'existe pas
+        return;
 
     l->fill = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
 
     l->outline = new_color(ask_integer_range("Red color", 0, 255), ask_integer_range("Green color", 0, 255), ask_integer_range("Blue color", 0, 255));
 
-    modify_point(l->translate); // Demande les coordonnée X, Y
+    modify_point(l->translate);
 
-    l->rotate = rotate_angle(); // Demande l'angle de rotation
+    l->rotate = rotate_angle();
 }
 /**
  * @brief This function deletes a line and frees the allocated memory for its endpoints and the line structure itself.
@@ -47,7 +46,7 @@ void style_line(Style_t *l)
  */
 void delete_line(Line_t *l)
 {
-    if (l != NULL) // Nettoyage de la mémoire
+    if (l != NULL)
         if (l->p1)
             free(l->p1);
     if (l->p2)

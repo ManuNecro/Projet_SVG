@@ -39,6 +39,4 @@ void export_svg_line(FILE *file, Line_t *ligne, Style_t *style);
  */
 void export_scene_svg(const char *filename, SVG_t *svg, int width, int height);
 
-
 #endif
-

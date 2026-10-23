@@ -4,13 +4,13 @@
 
 typedef struct Ellipse_s
 {
-    Point_t *center; //Pointeur vers le point central du cercle ou Ellipse (X, Y)
-    int rx; // Rayon sur l'axe X
-    int ry; // Rayon sur l'axe Y
+    Point_t *center;
+    int rx;
+    int ry;
 
-}Ellipse_t;
+} Ellipse_t;
 
-Ellipse_t *create_ellipse(void); // Créer une ellipse
+Ellipse_t *create_ellipse(void);
 
-void delete_ellipse(Ellipse_t *ellipse); // Supprimer une ellipse
+void delete_ellipse(Ellipse_t *ellipse);
 #endif

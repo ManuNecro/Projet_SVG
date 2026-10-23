@@ -3,26 +3,24 @@
 #include "create_color.h"
 #include "point.h"
 #include "rotate.h"
-
+/**
+ * @brief This structure represents the style of a shape, including fill color, outline color, translation, and rotation.
+ */
 typedef struct Style_s
 {
-    Color_t *fill; // Pointeur vers la couleur de remplissage
-    Color_t *outline; // Pointeur vers la couleur de contour
-    Point_t *translate; // Pointeur vers la translation (decalage X , Y)
-    Rotate_t *rotate; // Pointeur vers la rotation (angle)
+    Color_t *fill;
+    Color_t *outline;
+    Point_t *translate;
+    Rotate_t *rotate;
 
 } Style_t;
 
-// Créer un style 
-Style_t* create_style(void);
+Style_t *create_style(void);
 
-// Modifier un style 
 void modify_style(Style_t *style);
 
-// Afficher les informations de style
 void print_style(Style_t *style);
 
-// Libérer toute la mémoire du style
 void delete_style(Style_t *style);
 
 #endif

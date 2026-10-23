@@ -10,7 +10,7 @@
  * @param max The maximum acceptable selection value (inclusive).
  * @return The valid integer input provided by the user within the specified range.
  */
-int ask_navigation(char* menu, int min, int max)
+int ask_navigation(char *menu, int min, int max)
 {
-    return ask_integer_range(menu, min,max);
+    return ask_integer_range(menu, min, max);
 }

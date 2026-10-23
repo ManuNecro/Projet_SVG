@@ -19,18 +19,17 @@ Style_t *create_style(void)
         return NULL; // Sécurité si malloc echoue
 
     // création de la couleur de remplissage
-    printf("--- Creation de la couleur de remplissage ---\n");
-    uint8_t r = ask_integer_range("Red (0-255) : ", 0, 255);
-    uint8_t g = ask_integer_range("Green (0-255) : ", 0, 255);
-    uint8_t b = ask_integer_range("Blue (0-255) : ", 0, 255);
+    printf("--- Creation of the fill color ---\n");
+    uint8_t r = ask_integer_range("Red (0-255) : \n", 0, 255);
+    uint8_t g = ask_integer_range("Green (0-255) : \n", 0, 255);
+    uint8_t b = ask_integer_range("Blue (0-255) : \n", 0, 255);
 
     style->fill = new_color(r, g, b);
 
-
-    printf("--- Creation de la couleur des contours ---\n");
-    uint8_t r2 = ask_integer_range("Red (0-255) : ", 0, 255);
-    uint8_t g2 = ask_integer_range("Green (0-255) : ", 0, 255);
-    uint8_t b2 = ask_integer_range("Blue (0 - 255) : ", 0, 255);
+    printf("--- Creation of the outline color ---\n");
+    uint8_t r2 = ask_integer_range("Red (0-255) : \n", 0, 255);
+    uint8_t g2 = ask_integer_range("Green (0-255) : \n", 0, 255);
+    uint8_t b2 = ask_integer_range("Blue (0 - 255) : \n", 0, 255);
     style->outline = new_color(r2, g2, b2);
 
     printf("--- TRANSLATION --- \n");
@@ -49,16 +48,16 @@ void modify_style(Style_t *style)
     if (style == NULL)
         return; // securité si style n'existe pas
 
-    printf("--- Modification de la couleur de remplissage ---\n");
+    printf("--- Fill color modification ---\n");
     modify_color(style->fill);
 
-    printf("--- Modification de la couleur de contour ---\n");
+    printf("--- Outline color modification ---\n");
     modify_color(style->outline);
 
-    printf("--- Modification de la translation ---\n");
+    printf("--- Translation modification ---\n");
     modify_point(style->translate);
 
-    printf("--- Modification de la rotation ---\n");
+    printf("--- Rotation modification ---\n");
     modify_angle(style->rotate);
 }
 /**
@@ -71,17 +70,17 @@ void print_style(Style_t *style)
     if (style == NULL)
         return;
 
-    printf("\n--- INFORMATIONS DU STYLE ---\n");
-    printf("Couleur de remplissage : ");
+    printf("\n--- STYLE INFORMATION ---\n");
+    printf("Fill color : \n");
     print_color(style->fill);
 
-    printf("Couleur du contour : ");
+    printf("Outline color : \n");
     print_color(style->outline);
 
-    printf("Translation : ");
+    printf("Translation : \n");
     print_point(style->translate);
 
-    printf("Rotation : ");
+    printf("Rotation : \n");
     print_angle(style->rotate);
 }
 /**

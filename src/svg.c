@@ -42,7 +42,7 @@ void add_shape_to_svg(SVG_t *svg, Forme_t *shape)
         printf("Error : SVG or shape is NULL.\n");
         return;
     }
-    // On ajoute la forme au tableau de formes
+
     for (int i = 0; i < svg->capacity; i++)
     {
         if (svg->formes[i] == NULL)
@@ -126,7 +126,6 @@ void modify_shape_svg(SVG_t *svg, int index)
     }
     if (svg->formes[index] == NULL)
     {
-        printf("YOUHOU !");
         return;
     }
 
