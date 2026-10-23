@@ -2,4 +2,4 @@ projet_svg
 *.svg
 *.o
 *.bin
-*.temp
+*.tmp
