@@ -1,3 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-<ellipse cx="300" cy="300" rx="200" ry="500" fill="rgb(255,0,0)" stroke="rgb(25,255,255)" transform="translate(0,0) rotate(0)" />
+<rect x="34" y="5" width="34" height="5" fill="rgb(0,0,0)" stroke="rgb(255,255,255)" transform="translate(300,300) rotate(0)" />
+<ellipse cx="400" cy="400" rx="40" ry="40" fill="rgb(0,0,0)" stroke="rgb(255,255,255)" transform="translate(350,350) rotate(0)" />
 </svg>
